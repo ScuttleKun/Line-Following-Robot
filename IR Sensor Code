@@ -1,0 +1,68 @@
+int A4_PIN = 18;
+int A3_PIN = 17;
+int A2_PIN = 16;
+int A1_PIN = 15;
+int A0_PIN = 14;
+void setup() {
+  Serial.begin(9600);
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  int raw0 = analogRead(A0_PIN);
+  int raw1 = analogRead(A1_PIN);
+  int raw2 = analogRead(A2_PIN);
+  int raw3 = analogRead(A3_PIN);
+  int raw4 = analogRead(A4_PIN);
+  float vin0 = ((float)raw0) * 3.3;
+  float vin1 = ((float)raw1) * 3.3;
+  float vin2 = ((float)raw2) * 3.3;
+  float vin3 = ((float)raw3) * 3.3;
+  float vin4 = ((float)raw4) * 3.3;
+  int a=0;
+  int b=0;
+  int c=0;
+  int d=0;
+  int e=0;
+  if (vin0 > 170){
+    a = 1;
+  }
+  else{
+    a = 0;
+  }
+  if (vin1 > 170){
+    b = 1;
+  }
+    else{
+    b = 0;
+  }
+    if (vin2 > 170){
+    c = 1;
+    }
+  else{
+    c = 0;
+    }
+  if (vin3 > 170){
+    d = 1;
+  }
+  else{
+    d = 0;
+  }
+    if (vin4 > 170){
+    e = 1;
+    }
+  else{
+    e = 0;
+  }
+  Serial.print(a);
+  Serial.print(" ");
+  Serial.print(b);
+  Serial.print(" ");
+  Serial.print(c);
+  Serial.print(" ");
+  Serial.print(d);
+  Serial.print(" ");
+  Serial.println(e);
+  delay(1000);  
+}

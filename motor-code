@@ -1,0 +1,95 @@
+// --- Pin setup ---
+const uint8_t L1 = 8; // IN1 from the motor driver connected to D9
+const uint8_t L2 = 9; // IN2 from the motor driver connected to D8
+
+const uint8_t R1 = 11; // IN1 from the motor driver connected to D9
+const uint8_t R2 = 10; // IN2 from the motor driver connected to D8
+
+const uint8_t L_PWM = 3; // IN1 from the motor driver connected to D9
+const uint8_t R_PWM = 6; // IN2 from the motor driver connected to D8
+
+const uint8_t PWM_VAL_L = 248; // IN1 from the motor driver connected to D9
+const uint8_t PWM_VAL_R = 255; // IN2 from the motor driver connected to D8
+
+void setup() {
+  // Configure the pins as outputs
+  Serial.begin(9600); 
+  pinMode(L1, OUTPUT);
+  pinMode(L2, OUTPUT);
+  pinMode(R1, OUTPUT);
+  pinMode(R2, OUTPUT);
+
+  pinMode(L_PWM, OUTPUT);
+  pinMode(R_PWM, OUTPUT);
+
+  analogWrite(L_PWM, PWM_VAL_L);
+  analogWrite(R_PWM, PWM_VAL_R);
+}
+
+
+void forward()
+{
+  digitalWrite(L1, HIGH);
+  digitalWrite(L2, LOW);
+
+  digitalWrite(R1, HIGH);
+  digitalWrite(R2, LOW);
+
+   delay(10); 
+}
+
+void turnLeft()
+{
+  digitalWrite(L1, LOW);
+  digitalWrite(L2, HIGH);
+
+  digitalWrite(R1, HIGH);
+  digitalWrite(R2, LOW);
+   delay(10); 
+}
+
+void turnRight()
+{
+  digitalWrite(L1, HIGH);
+  digitalWrite(L2, LOW);
+
+  digitalWrite(R1, LOW);
+  digitalWrite(R2, HIGH);
+  delay(10); 
+}
+
+void stopMotors() 
+{
+  digitalWrite(L1, LOW);
+  digitalWrite(L2, LOW);
+
+  digitalWrite(R1, LOW);
+  digitalWrite(R2, LOW);
+   delay(10); 
+}
+
+void testLeft()
+{
+  digitalWrite(L1, HIGH);
+  digitalWrite(L2, LOW);
+
+
+   delay(10); 
+
+}
+
+void testRight()
+{
+  digitalWrite(R1, HIGH);
+  digitalWrite(R2, LOW); 
+
+   delay(10); 
+
+
+}
+
+// --- Main loop ---
+void loop() {
+  forward();
+  delay(50);
+}

@@ -1,0 +1,68 @@
+int sensor1 = PIN1;
+int sensor2 = PIN2;
+int sensor3 = PIN3;
+
+int sensorValue1 = 0;
+int voltageValue1 = 0;
+int sensorValue2 = 0;
+int voltageValue2 = 0;
+int sensorValue3 = 0;
+int voltageValue3 = 0;
+
+int in1 = PIN4;
+int in2 = PIN5;
+int in3 = PIN6;
+int in4 = PIN7;
+
+void setup(){
+    Serial.begin(9600);
+    pinMode(sensor1, INPUT);
+    pinMode(sensor2, INPUT);
+    pinMode(sensor3, INPUT);
+
+    pinMode(in1, OUTPUT);
+    pinMode(in2, OUTPUT);
+    pinMode(in3, OUTPUT);
+    pinMode(in4, OUTPUT);
+}
+
+void loop(){
+    sensorValue1 = analogRead(sensor1);
+    voltageValue1 = map(sensorValue1, 0, 1023, 0, 5);
+    sensorValue2 = analogRead(sensor2);
+    voltageValue2 = map(sensorValue2, 0, 1023, 0, 5);
+    sensorValue3 = analogRead(sensor3);
+    voltageValue3 = map(sensorValue3, 0, 1023, 0, 5);
+
+    if (voltageValue1 < 850){
+        MoveForward;
+    }
+}
+
+void MoveForward(){
+    digitalWrite(in1, HIGH);
+    digitalWrite(in2, LOW);
+    digitalWrite(in3, HIGH);
+    digitalWrite(in4, LOW);
+}
+
+void MoveBackward(){
+    digitalWrite(in1, LOW);
+    digitalWrite(in2, HIGH);
+    digitalWrite(in3, LOW);
+    digitalWrite(in4, HIGH);
+}
+
+void TurnRight(){
+    digitalWrite(in1, HIGH);
+    digitalWrite(in2, LOW);
+    digitalWrite(in3, LOW);
+    digitalWrite(in4, HIGH);
+}
+
+void TurnLeft(){
+    digitalWrite(in1, LOW);
+    digitalWrite(in2, HIGH);
+    digitalWrite(in3, HIGH);
+    digitalWrite(in4, LOW);
+}
