@@ -3,8 +3,7 @@
 ## Overview
 This repository contains the embedded C/C++ firmware for an autonomous line-following robot. Built on the Arduino platform, the system utilizes a 5-channel Infrared (IR) sensor array for path detection and a state machine architecture to govern navigation logic. The codebase is modular, separating sensor polling, state determination, and motor actuation into distinct hardware abstraction layers.
 
-## Developer
-* **Ivan Phung** ## Hardware Components
+## Hardware Components
 * **Microcontroller:** Arduino-compatible board (e.g., Uno/Nano)
 * **Path Detection:** 5-Channel Analog IR Sensor Array
 * **Motor Driver:** H-Bridge Motor Driver (e.g., L298N) controlling two DC motors
